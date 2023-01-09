@@ -1,5 +1,17 @@
-﻿  mystring.c
+﻿  main.c
+E:\CODE\String\String\main.c(63,2): warning C4013: “system”未定义；假设外部返回 int
+  mystring.c
 E:\CODE\String\String\mystring.c(51,21): warning C4018: “<”: 有符号/无符号不匹配
 E:\CODE\String\String\mystring.c(66,21): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(120,22): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(125,22): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(150,37): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(183,30): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(189,83): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(218,18): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(223,22): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
 E:\CODE\String\String\mystring.c(74): warning C4715: “StrCopy”: 不是所有的控件路径都返回值
+E:\CODE\String\String\mystring.c(210): warning C4715: “IndexBF”: 不是所有的控件路径都返回值
+E:\CODE\String\String\mystring.c(177): warning C4715: “SubString”: 不是所有的控件路径都返回值
   String.vcxproj -> E:\CODE\String\x64\Debug\String.exe
