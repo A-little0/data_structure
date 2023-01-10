@@ -52,13 +52,54 @@ void test04()
 	ShowString(str);
 }
 
+void test05()
+{
+	printf("ok");
+	Sstring* str = StringInit();
+	StrAssign(str, "abcdefghjnizklmnjnizk");
+
+	Sstring* sonstr = StringInit();
+	StrAssign(sonstr, "jnizk");
+
+	int* point = IndexBF(str, sonstr);
+	int num = sizeof("abcdefghjnizklmnjnizk") / sizeof('a');
+	for (int i = 0; i < num; i++)
+	{
+		printf("%d\r\n", *point);
+		point++;
+	}
+}
+
+void test06()
+{
+	Sstring* str = StringInit();
+	StrAssign(str, "aaaaabbbbbbccccccbbbbbbc");
+	//printf("%d\r\n", StrLength(str));
+	Sstring* comparestr = StringInit();
+	StrAssign(comparestr, "bbbbbb");
+
+	Sstring* replacestr = StringInit();
+	StrAssign(replacestr, "successful");
+	int* point = IndexBF(str, comparestr);
+	int num = sizeof("aaaaabbbbbbcccccc") / sizeof('a');
+	for (int i = 0; i < num; i++)
+	{
+		printf("%d\r\n", *point);
+		point++;
+	}
+	Replace(str, comparestr, replacestr);
+	ShowString(str);
+}
+
 
 int main() {
 
 	//test01();
 	//test02();
 	//test03();
-	test04();
+	//test04();
+	//test05();
+	test06();
 
 	system("pause");
 	return 0;

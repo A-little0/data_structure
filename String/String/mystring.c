@@ -40,7 +40,7 @@ void StrAssign(Sstring* str,char* const_strpoint)//用字符串常量初始化str
 	}
 	else
 	{
-		printf("assign error:no enough string_space to assign");
+		printf("assign error:no enough string_space to assign\r\n");
 	}
 	tempC = NULL;
 }
@@ -48,7 +48,7 @@ void ShowString(Sstring* str)
 {
 	if (str->len !=0)
 	{
-		for (int i = 0; i < str->len; i++)
+		for (unsigned int i = 0; i < str->len; i++)
 		{
 			printf("%c", str->str[i]);
 		}
@@ -159,53 +159,115 @@ Sstring* SubString(Sstring* str, unsigned int pos, unsigned int len)//返回从第po
 			}
 			else
 			{
-				printf("substring error:长度越界");
+				printf("substring error:长度越界\r\n");
 				return str;
 			}
 		}
 		else
 		{
-			printf("substring error:下标访问错误");
+			printf("substring error:下标访问错误\r\n");
 			return str;
 		}
 	}
 	else
 	{
-		printf("substring error:this string is empty");
+		printf("substring error:this string is empty\r\n");
 		return str;
 	}
 }
-int IndexBF(Sstring* capital_str, Sstring* son_str)//查找con_str是否为主串的子串，若有则返回第一个元素的下标位置，否则返回0
+int* IndexBF(Sstring* capital_str, Sstring* son_str)//查找con_str是否为主串的子串，若有则返回第一个元素的下标位置，否则返回0
 {
 	if (capital_str->len > son_str->len && son_str->len!= 0)
 	{
-		int cap_bagin = 0;
-		for (int sonsub = 0; sonsub<son_str->len; sonsub++)
+		int subarr[MINLENGTH] = { 0 };//存储子串在主串第一个元素的位置
+		int arr_sub = 0;//数组下标
+		int cap_bagin = 0;//下标
+		while ((capital_str->len - son_str->len) >= cap_bagin)
 		{
-			if (capital_str->str[cap_bagin + sonsub] == son_str->str[sonsub])
+			int sonsub ;
+			for (sonsub=0; sonsub < son_str->len&&cap_bagin<=(capital_str->len-son_str->len);)
 			{
-				//continue;//匹配成功
+				if (capital_str->str[cap_bagin + sonsub] == son_str->str[sonsub])
+				{
+					//continue;//匹配成功
+					sonsub++;
+				}
+				else if (capital_str->str[cap_bagin + sonsub] != son_str->str[sonsub] && cap_bagin < capital_str->len)
+				{
+					cap_bagin++;
+					sonsub = 0;
+				}
 			}
-			else if(capital_str->str[cap_bagin + sonsub] != son_str->str[sonsub]&&cap_bagin<capital_str->len)
+			if (sonsub != 0)
 			{
-				sonsub = 0;
-				cap_bagin++;
+				subarr[arr_sub] = cap_bagin+1;//cap_bagin+1==pos
+				if (cap_bagin < capital_str->len)
+				{
+					cap_bagin += son_str->len;
+				}
+				arr_sub++;
 			}
 		}
-		if (cap_bagin != 0)
-		{
-			return cap_bagin;//返回下标
-			int pos = cap_bagin+1;//返回元素第pos个元素
-			return pos;
-		}
-		else
-		{
-			return 0;
-		}
+		return subarr;
 	}
 	else
 	{
 		printf("index error:the first string is to short or is empty\r\n");
+	}
+}
+int* IndexKMP(Sstring* capital_str, Sstring* son_str)//查找con_str是否为主串的子串，若有则返回第一个元素的位置位置，否则返回0；(KMP算法)
+{
+	if (capital_str->len > son_str->len && son_str->len != 0)
+	{
+		int subarr[MINLENGTH] = { 0 };//存储子串在主串第一个元素的位置
+		int arr_sub = 0;//数组下标
+		int cap_bagin = 0;//下标
+		while ((capital_str->len - son_str->len) >= cap_bagin)
+		{
+			int sonsub;
+			for (sonsub = 0; sonsub < son_str->len && cap_bagin <= (capital_str->len - son_str->len);)
+			{
+				if (capital_str->str[cap_bagin + sonsub] == son_str->str[sonsub])
+				{
+					//continue;//匹配成功
+					sonsub++;
+				}
+				else if (capital_str->str[cap_bagin + sonsub] != son_str->str[sonsub] && cap_bagin < capital_str->len)
+				{
+					int sonend= cap_bagin + sonsub-1;
+					int sonbegin = 0;
+					sonsub = 0;
+				}
+			}
+			if (sonsub != 0)
+			{
+				subarr[arr_sub] = cap_bagin + 1;//cap_bagin+1==pos
+				if (cap_bagin < capital_str->len)
+				{
+					cap_bagin += son_str->len;
+				}
+				arr_sub++;
+			}
+		}
+		return subarr;
+	}
+	else
+	{
+		printf("index error:the first string is to short or is empty\r\n");
+	}
+}
+void Replace(Sstring* capital_str, Sstring* compare_str, Sstring* replaced_str)//在capital_str中找到与compare_str相同的子串，并替换为replaced_str
+{
+	int* getpos = IndexBF(capital_str, compare_str);
+	for (;(* getpos) != 0; )
+	{
+		StrInsert(capital_str,*getpos,replaced_str);//在第POS个元素前插入insert_str
+		StrDelete(capital_str,*getpos+replaced_str->len,compare_str->len);//在第POS个元素起，删除长度为len的子串
+		getpos++;
+		if (*getpos != 0)
+		{
+			*getpos += (replaced_str->len - compare_str->len);
+		}
 	}
 }
 void StrInsert(Sstring* capital_str, unsigned int pos, Sstring* insert_str)//在第POS个元素前插入insert_str
@@ -251,12 +313,12 @@ void StrDelete(Sstring* capital_str, unsigned int pos, unsigned int len)//在第PO
 		}
 		else
 		{
-			printf("strdelete error:this string have not enough len to delete");
+			printf("strdelete error:this string have not enough len to delete\r\n");
 		}
 	}
 	else
 	{
-		printf("strdelete error:this string is empty ");
+		printf("strdelete error:this string is empty\r\n ");
 	}
 }
 void DestroyString(Sstring* str)//回收内存
