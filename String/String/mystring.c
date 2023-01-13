@@ -217,43 +217,68 @@ int* IndexBF(Sstring* capital_str, Sstring* son_str)//²éÕÒcon_strÊÇ·ñÎªÖ÷´®µÄ×Ó´
 }
 int* IndexKMP(Sstring* capital_str, Sstring* son_str)//²éÕÒcon_strÊÇ·ñÎªÖ÷´®µÄ×Ó´®£¬ÈôÓĞÔò·µ»ØµÚÒ»¸öÔªËØµÄÎ»ÖÃÎ»ÖÃ£¬·ñÔò·µ»Ø0£»(KMPËã·¨)
 {
-	if (capital_str->len > son_str->len && son_str->len != 0)
+	if (capital_str->len >= son_str->len)//ÅĞ¶Ïson_strÊÇ·ñÎªcapital_strµÄ×Ó´®
 	{
-		int subarr[MINLENGTH] = { 0 };//´æ´¢×Ó´®ÔÚÖ÷´®µÚÒ»¸öÔªËØµÄÎ»ÖÃ
-		int arr_sub = 0;//Êı×éÏÂ±ê
-		int cap_bagin = 0;//ÏÂ±ê
-		while ((capital_str->len - son_str->len) >= cap_bagin)
+		int posarr[MINLENGTH] = { 0 };//³õÊ¼»¯Æ¥ÅäÊ×ÔªËØÎ»ÖÃÊı×é
+		int posnum=0;
+		int nextarr[MINLENGTH] = { 0 };//³õÊ¼»¯nextÊı×é
+		int poserror = 1;
+		int son_pospoint = 1;
+		
+		while ((capital_str->len - son_str->len) + 1 >= son_pospoint)//±éÀúÕû¸öÖ÷´®
 		{
-			int sonsub;
-			for (sonsub = 0; sonsub < son_str->len && cap_bagin <= (capital_str->len - son_str->len);)
+			int i = 1;//iÎªpos£¬Ö¸Ïò×Ó´®µÚi¸öÔªËØ
+			for (;i<=son_str->len;)
 			{
-				if (capital_str->str[cap_bagin + sonsub] == son_str->str[sonsub])
+				if (capital_str->str[son_pospoint + i - 1 - 1] == son_str->str[i - 1])
 				{
-					//continue;//Æ¥Åä³É¹¦
-					sonsub++;
+					i++;//Æ¥Åä³É¹¦
 				}
-				else if (capital_str->str[cap_bagin + sonsub] != son_str->str[sonsub] && cap_bagin < capital_str->len)
+				else//Æ¥ÅäÊ§°ÜKMP
 				{
-					int sonend= cap_bagin + sonsub-1;
-					int sonbegin = 0;
-					sonsub = 0;
+					poserror = i;//±ê¼Ç×Ó´®µÚi¸öÔªËØÊÇÆ¥ÅäÊ§°ÜµÄÔªËØ
+					nextarr[0] = -1;//nextÊı×éµÄµÚÒ»¸öÔªËØ±ØÎª-1
+
+					int comparelen = poserror - 1;
+					for (int m= 1;m < comparelen;m++)//ÅĞ¶Ï×î³¤Ç°ºó×º
+					{
+						for (int j = 0; j < m; j++)
+						{
+							if (son_str->str[j] == son_str->str[comparelen - m + j])
+							{
+								nextarr[poserror - 1] = m;
+							}
+							else if (son_str->str[j] != son_str->str[comparelen - m + j] && nextarr[poserror - 1] == 0)
+							{
+								nextarr[poserror - 1] = 0;
+							}
+						}
+					}
+					son_pospoint += comparelen - nextarr[poserror - 1];//ÒÆ¶¯×Ó´®µÚÒ»¸öÔªËØÔÚÖ÷´®µÄµÚson_pospointµÄÎ»ÖÃ
+					if (nextarr[poserror - 1] == -1)//Æ¥ÅäÊ§°ÜµÄÌØÊâÇé¿ö£º×Ó´®µÄµÄµÚÒ»¸öÔªËØÆ¥ÅäÊ§°Ü
+					{
+						i = 1;//¸üĞÂiÔÚson_strÉÏµÄÖ¸Ïò
+					}
+					else
+					{
+						i =nextarr[poserror - 1]+1;//¸üĞÂiÔÚson_strÉÏµÄÖ¸Ïò
+					}
+
 				}
 			}
-			if (sonsub != 0)
+			if (i > son_str->len)//ÅĞ¶ÏÊÇ·ñÕÒµ½×Ó´®
 			{
-				subarr[arr_sub] = cap_bagin + 1;//cap_bagin+1==pos
-				if (cap_bagin < capital_str->len)
-				{
-					cap_bagin += son_str->len;
-				}
-				arr_sub++;
+				posarr[posnum] = son_pospoint;
+				posnum++;
+				son_pospoint += son_str->len;//¼ÌĞøÑ°ÕÒÏÂÒ»¸ö×Ó´®
+				i = 1;
 			}
 		}
-		return subarr;
+		return posarr;
 	}
 	else
 	{
-		printf("index error:the first string is to short or is empty\r\n");
+		printf("indexkmp error:captial are too shortr\r\n");
 	}
 }
 void Replace(Sstring* capital_str, Sstring* compare_str, Sstring* replaced_str)//ÔÚcapital_strÖĞÕÒµ½Óëcompare_strÏàÍ¬µÄ×Ó´®£¬²¢Ìæ»»Îªreplaced_str

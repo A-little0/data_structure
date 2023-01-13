@@ -91,6 +91,48 @@ void test06()
 	ShowString(str);
 }
 
+void test08()
+{
+	Sstring* str = StringInit();
+	StrAssign(str, "abcdabcdabcdcjnabcdcjn");
+	//printf("%d\r\n", StrLength(str));
+	Sstring* comparestr = StringInit();
+	StrAssign(comparestr, "cjn");
+
+	int* p=IndexKMP(str, comparestr);
+	p++;
+	printf("%d", *p);
+}
+
+int nexttest(Sstring* son_str,int poserror)
+{
+	int strlen = son_str->len;//获取子串的长度
+	char* next = son_str->str;//获取子串
+	
+	int next_posbagin = 1;//子串头指针
+	int next_posend = strlen;//子串尾指针
+
+	int nextarr[MINLENGTH] = {0};//初始化next
+	nextarr[0] = -1;//next数组的第一个元素必为-1
+
+	int comparelen = poserror - 1;
+	for (int i = 1; i < comparelen; i++)//
+	{
+		for (int j = 0; j < i; j++)
+		{
+			if (next[j] == next[comparelen - i+j])
+			{
+				nextarr[poserror-1] = i;
+			}
+			else if(next[j] != next[comparelen - i + j]&&nextarr[poserror-1]==0)
+			{
+				nextarr[poserror-1] = 0;
+			}
+		}
+	}
+	return nextarr[poserror-1];
+}
+
 
 int main() {
 
@@ -99,7 +141,12 @@ int main() {
 	//test03();
 	//test04();
 	//test05();
-	test06();
+	//test06();
+	//Sstring* str = StringInit();
+	//StrAssign(str, "ABCDABD");
+	//int num=nexttest(str, 7);
+	//printf("%d", num);
+	test08();
 
 	system("pause");
 	return 0;
