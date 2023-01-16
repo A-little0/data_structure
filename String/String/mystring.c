@@ -179,7 +179,7 @@ int* IndexBF(Sstring* capital_str, Sstring* son_str)//²éÕÒcon_strÊÇ·ñÎªÖ÷´®µÄ×Ó´
 {
 	if (capital_str->len > son_str->len && son_str->len!= 0)
 	{
-		int subarr[MINLENGTH] = { 0 };//´æ´¢×Ó´®ÔÚÖ÷´®µÚÒ»¸öÔªËØµÄÎ»ÖÃ
+		static int subarr[MINLENGTH] = { 0 };//´æ´¢×Ó´®ÔÚÖ÷´®µÚÒ»¸öÔªËØµÄÎ»ÖÃ
 		int arr_sub = 0;//Êı×éÏÂ±ê
 		int cap_bagin = 0;//ÏÂ±ê
 		while ((capital_str->len - son_str->len) >= cap_bagin)
@@ -200,7 +200,8 @@ int* IndexBF(Sstring* capital_str, Sstring* son_str)//²éÕÒcon_strÊÇ·ñÎªÖ÷´®µÄ×Ó´
 			}
 			if (sonsub != 0)
 			{
-				subarr[arr_sub] = cap_bagin+1;//cap_bagin+1==pos
+				subarr[arr_sub] = cap_bagin + 1;//cap_bagin+1==pos
+
 				if (cap_bagin < capital_str->len)
 				{
 					cap_bagin += son_str->len;
@@ -219,7 +220,7 @@ int* IndexKMP(Sstring* capital_str, Sstring* son_str)//²éÕÒcon_strÊÇ·ñÎªÖ÷´®µÄ×Ó
 {
 	if (capital_str->len >= son_str->len)//ÅĞ¶Ïson_strÊÇ·ñÎªcapital_strµÄ×Ó´®
 	{
-		int posarr[MINLENGTH] = { 0 };//³õÊ¼»¯Æ¥ÅäÊ×ÔªËØÎ»ÖÃÊı×é
+		static int posarr[MINLENGTH] = { 0 };//³õÊ¼»¯Æ¥ÅäÊ×ÔªËØÎ»ÖÃÊı×é
 		int posnum=0;
 		int nextarr[MINLENGTH] = { 0 };//³õÊ¼»¯nextÊı×é
 		int poserror = 1;

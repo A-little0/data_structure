@@ -1,5 +1,6 @@
 #include "main.h"
 #include "mystring.h"
+#define SIZE 5
 
 void test01()
 {
@@ -82,6 +83,7 @@ void test06()
 	StrAssign(replacestr, "successful");
 	int* point = IndexBF(str, comparestr);
 	int num = sizeof("aaaaabbbbbbcccccc") / sizeof('a');
+
 	for (int i = 0; i < num; i++)
 	{
 		printf("%d\r\n", *point);
@@ -132,6 +134,15 @@ int nexttest(Sstring* son_str,int poserror)
 	}
 	return nextarr[poserror-1];
 }
+int* arr_return_test01()
+{
+	int arr[SIZE] = { 0 };
+	for (int i = 0; i < SIZE; i++)
+	{
+		arr[i] = i;
+	}
+	return arr;
+}
 
 
 int main() {
@@ -141,12 +152,18 @@ int main() {
 	//test03();
 	//test04();
 	//test05();
-	//test06();
+	test06();
 	//Sstring* str = StringInit();
 	//StrAssign(str, "ABCDABD");
 	//int num=nexttest(str, 7);
 	//printf("%d", num);
-	test08();
+	//test08();
+	//int* point = arr_return_test01();
+	//for (int i = 0; i < SIZE; i++)
+	//{
+	//	printf("%d\r\n", *point);
+	//	point++;
+	//}
 
 	system("pause");
 	return 0;

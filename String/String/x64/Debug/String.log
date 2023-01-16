@@ -1,4 +1,7 @@
-﻿  mystring.c
+﻿  main.c
+E:\CODE\String\String\main.c(41,1): warning C4047: “初始化”:“int”与“int *”的间接级别不同
+E:\CODE\String\String\main.c(168,2): warning C4013: “system”未定义；假设外部返回 int
+  mystring.c
 E:\CODE\String\String\mystring.c(66,21): warning C4018: “<”: 有符号/无符号不匹配
 E:\CODE\String\String\mystring.c(120,22): warning C4018: “<”: 有符号/无符号不匹配
 E:\CODE\String\String\mystring.c(125,22): warning C4018: “<”: 有符号/无符号不匹配
@@ -7,16 +10,16 @@ E:\CODE\String\String\mystring.c(185,44): warning C4018: “>=”: 有符号/无
 E:\CODE\String\String\mystring.c(188,26): warning C4018: “<”: 有符号/无符号不匹配
 E:\CODE\String\String\mystring.c(188,51): warning C4018: “<=”: 有符号/无符号不匹配
 E:\CODE\String\String\mystring.c(195,88): warning C4018: “<”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(204,19): warning C4018: “<”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(228,48): warning C4018: “>=”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(231,11): warning C4018: “<=”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(269,10): warning C4018: “>”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(305,18): warning C4018: “<”: 有符号/无符号不匹配
-E:\CODE\String\String\mystring.c(310,22): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(205,19): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(229,48): warning C4018: “>=”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(232,11): warning C4018: “<=”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(270,10): warning C4018: “>”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(306,18): warning C4018: “<”: 有符号/无符号不匹配
+E:\CODE\String\String\mystring.c(311,22): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
 E:\CODE\String\String\mystring.c(74): warning C4715: “StrCopy”: 不是所有的控件路径都返回值
 E:\CODE\String\String\mystring.c(177): warning C4715: “SubString”: 不是所有的控件路径都返回值
-E:\CODE\String\String\mystring.c(217): warning C4715: “IndexBF”: 不是所有的控件路径都返回值
-E:\CODE\String\String\mystring.c(283): warning C4715: “IndexKMP”: 不是所有的控件路径都返回值
-E:\CODE\String\String\mystring.c(211): warning C4172: 返回局部变量或临时变量的地址: subarr
-E:\CODE\String\String\mystring.c(277): warning C4172: 返回局部变量或临时变量的地址: posarr
+E:\CODE\String\String\mystring.c(218): warning C4715: “IndexBF”: 不是所有的控件路径都返回值
+E:\CODE\String\String\mystring.c(284): warning C4715: “IndexKMP”: 不是所有的控件路径都返回值
+E:\CODE\String\String\main.c(144): warning C4172: 返回局部变量或临时变量的地址: arr
   String.vcxproj -> E:\CODE\String\x64\Debug\String.exe
