@@ -3,6 +3,9 @@
 
 #include "main.h"
 
+#define TRUE 1
+#define FALSE 0
+
 //单向链表
 typedef struct list {
 	int value;//储存值
@@ -23,4 +26,30 @@ void sort_value(list* point_head);//从小到大排序（改变原链表）
 void sortReverse_value(list* point_head);//从大到小排序（改变原链表）
 void sort_valueC(const list* point_head);//从小到大排序（不改变原表）
 void sortReverse_valueC(const list* point_head);//从大到小排序（不改变原表）
+void destroy(list* point_head);//释放空间
+
+//循环链表
+typedef struct clist {
+	int value;
+	struct clist* p_next;
+}clist;
+
+clist* clist_Init();
+int emptyClist(clist* point_head);
+void push_back_c(int value, clist* point_head);
+void pop_back_c(clist* point_head);
+void destroyC(clist* point_head);
+
+//双向链表
+typedef struct dlist {
+	int value;
+	struct dlist* p_next;
+	struct dlist* p_last;
+}dlist;
+
+dlist* dlist_Init();
+int emptyDlist(dlist* point_head);
+void push_back_d(int value, dlist* point_head);
+void pop_back_d(dlist* point_head);
+void destroyD(dlist* point_head);
 #endif

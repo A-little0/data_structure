@@ -1,6 +1,7 @@
 #include "mylist.h"
 #include "malloc.h"
 
+//带头节点的单链表
 list* list_Init()//初始化带头节点的单链表
 {
 	list* p_head = (list*)malloc(sizeof(list));
@@ -492,4 +493,204 @@ void sortReverse_valueC(const list* point_head)//从大到小排序（不改变原表）
 	}
 	else if (num == 1) {/*只含有一个元素*/ }
 	else { printf("this is a empty list"); }
+}
+void destroy(list* point_head)//释放空间
+{
+	free(point_head);
+}
+
+//带头结点的循环链表
+clist* clist_Init()
+{
+	clist* clist_point = (clist*)malloc(sizeof(clist));
+	if (clist_point != NULL)
+	{
+		clist_point->value = 0;
+		clist_point->p_next = clist_point;
+		return clist_point;
+	}
+	else
+	{
+		printf("clist Init error:no enough space to init\r\n");
+	}
+}
+int emptyClist(clist* point_head)
+{
+	if (point_head->p_next == point_head)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+void push_back_c(int value, clist* point_head)
+{
+	clist* sour_clistptr = point_head;
+
+	clist* clistptr = (clist*)malloc(sizeof(clist));
+		if (clistptr != NULL)
+		{
+			clistptr->value = value;
+			
+			if (emptyClist(sour_clistptr))
+			{
+				sour_clistptr->p_next = clistptr;
+				clistptr->p_next = point_head;
+			}
+			else
+			{
+				while (sour_clistptr->p_next != point_head)
+				{
+					sour_clistptr = sour_clistptr->p_next;
+				}
+				sour_clistptr->p_next = clistptr;
+				clistptr->p_next = point_head;
+			}
+		}
+		else
+		{
+			printf("push back error:no enough space to push back\r\n");
+		}
+}
+void pop_back_c(clist* point_head)
+{
+	clist* clistptr = point_head;
+	
+	if (emptyClist(clistptr))
+	{
+		printf("this clist is empty\r\n");
+	}
+	else
+	{
+		int times = 0;
+		while (clistptr->p_next != point_head)
+		{
+			clistptr = clistptr->p_next;
+			times++;
+		}
+		clist* tempptr = point_head;
+		for (int i = 0; i < times-1; i++)
+		{
+			tempptr = tempptr->p_next;
+		}
+		tempptr->p_next = point_head;
+		free(clistptr);
+	}
+}
+void destroyC(clist* point_head)
+{
+	if (emptyClist)
+	{
+		free(point_head);
+	}
+	else
+	{
+		clist* beginptr = point_head;
+		clist* endptr = beginptr->p_next;
+		while (endptr!= point_head)
+		{
+			free(beginptr);
+			beginptr = endptr;
+			endptr = endptr->p_next;
+		}
+		free(endptr);
+	}
+}
+
+//带头节点的双向循环列表
+dlist* dlist_Init()
+{
+	dlist* dlistptr = (dlist*)malloc(sizeof(dlist));
+	if (dlistptr != NULL)
+	{
+		dlistptr->value = 0;
+		dlistptr->p_last = dlistptr;
+		dlistptr->p_next = dlistptr;
+
+	}
+	else
+	{
+		printf("dlist init error:no enough space to init\r\n");
+	}
+}
+int emptyDlist(dlist* point_head)
+{
+	if (point_head->p_next ==point_head&&point_head->p_last==point_head)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+void push_back_d(int value, dlist* point_head)
+{
+	dlist* dlistptr = (dlist*)malloc(sizeof(dlist));
+	if (dlistptr != NULL)
+	{
+		dlist* sour_dlistptr = point_head;
+		dlistptr->value = value;
+
+		if (emptyDlist(point_head))
+		{
+			sour_dlistptr->p_next = dlistptr;
+			dlistptr->p_next = point_head;
+			dlistptr->p_last = point_head;
+			point_head->p_last = dlistptr;
+		}
+		else
+		{
+			while (sour_dlistptr->p_next != point_head)
+			{
+				sour_dlistptr = sour_dlistptr->p_next;
+			}
+			sour_dlistptr->p_next = dlistptr;
+			dlistptr->p_last = sour_dlistptr;
+			dlistptr->p_next = point_head;
+			point_head->p_last = dlistptr;
+		}
+	}
+	else
+	{
+		printf("push back error: no enough space to push back to dlist\r\n");
+	}
+
+}
+void pop_back_d(dlist* point_head)
+{
+	if (emptyDlist(point_head))
+	{
+		printf("pop back error: this dlist is empty\r\n");
+	}
+	else
+	{
+		dlist* endptr= point_head->p_last;
+		dlist* endptr_last = endptr->p_last;
+		endptr_last->p_next = point_head;
+		point_head->p_last = endptr_last;
+		free(endptr);
+	}
+}
+void destroyD(dlist* point_head)
+{
+	if (emptyDlist)
+	{
+		free(point_head);
+	}
+	else
+	{
+		dlist* endptr = point_head->p_last;
+		dlist* endptr_last = endptr->p_last;
+		while (endptr_last != point_head)
+		{
+			free(endptr);
+			endptr = endptr_last;
+			endptr_last = endptr_last->p_last;
+		}
+		free(endptr);
+		free(point_head);
+	}
 }
