@@ -1,0 +1,13 @@
+﻿  main.c
+E:\CODE\Stack\Stack\main.c(118,2): warning C4013: “system”未定义；假设外部返回 int
+  mystack.c
+E:\CODE\Stack\Stack\mystack.c(54,26): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+  正在生成代码...
+E:\CODE\Stack\Stack\mystack.c(18): warning C4715: “StackInit”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(66): warning C4715: “GetTop”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(90): warning C4715: “Pop”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(121): warning C4715: “LinkStackInit”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(158): warning C4715: “LinkStack_Push”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(173): warning C4715: “LinkStack_Pop”: 不是所有的控件路径都返回值
+E:\CODE\Stack\Stack\mystack.c(184): warning C4715: “LinkStack_Gettop”: 不是所有的控件路径都返回值
+  Stack.vcxproj -> E:\CODE\Stack\x64\Debug\Stack.exe
