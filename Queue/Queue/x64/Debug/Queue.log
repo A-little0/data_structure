@@ -1,0 +1,5 @@
+﻿  myqueue.c
+E:\CODE\Queue\Queue\myqueue.c(18): warning C4716: “QueueInit”: 必须返回一个值
+E:\CODE\Queue\Queue\myqueue.c(53): warning C4715: “GetHead”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(84): warning C4715: “DeQueue”: 不是所有的控件路径都返回值
+  Queue.vcxproj -> E:\CODE\Queue\x64\Debug\Queue.exe
