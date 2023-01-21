@@ -78,10 +78,122 @@ void test02()
 
 }
 
+void test03()
+{
+	CQueue* mycqueue = CQueueInit();
+	if (CQueueEmpty(mycqueue))
+	{
+		printf("cqueue init success\r\n");
+	}
+	else
+	{
+		printf("cqueue init fail\r\n");
+	}
+
+	EnCQueue(10, mycqueue);
+	if (CQueueEmpty(mycqueue))
+	{
+		printf("EnCQueue fail\r\n");
+	}
+	else
+	{
+		if (10 == GetHead_C(mycqueue))
+		{
+			printf("put value success\r\n");
+		}
+		else
+		{
+			printf("put value fail\r\n");
+		}
+	}
+
+	for (int i = 1; i <= 9; i++)
+	{
+		EnCQueue(10+i*10, mycqueue);
+	}
+	CQueueTraverse(mycqueue);
+	EnCQueue(10, mycqueue);
+
+	int popvalue=DeCQueue(mycqueue);
+	printf("popvalue:%d\r\n", popvalue);
+	CQueueTraverse(mycqueue);
+}
+
+void test04()
+{
+	CQueue* mycqueue = CQueueInit();
+
+	EnCQueue(10, mycqueue);
+	for (int i = 1; i <= 9; i++)
+	{
+		EnCQueue(10 + i * 10, mycqueue);
+	}
+	//CQueueTraverse(mycqueue);
+	//EnCQueue(10, mycqueue);
+
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	//CQueueTraverse(mycqueue);
+
+	EnCQueue(10, mycqueue);
+	EnCQueue(20, mycqueue);
+	EnCQueue(30, mycqueue);
+	EnCQueue(40, mycqueue);
+	//CQueueTraverse(mycqueue);
+
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	//CQueueTraverse(mycqueue);
+	EnCQueue(50, mycqueue);
+	EnCQueue(60, mycqueue);
+	EnCQueue(70, mycqueue);
+	EnCQueue(80, mycqueue);
+	EnCQueue(90, mycqueue);
+	EnCQueue(100, mycqueue);
+	CQueueTraverse(mycqueue);
+
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	//CQueueTraverse(mycqueue);
+
+	EnCQueue(10, mycqueue);
+	EnCQueue(20, mycqueue);
+	EnCQueue(30, mycqueue);
+	EnCQueue(40, mycqueue);
+	//CQueueTraverse(mycqueue);
+
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	DeCQueue(mycqueue);
+	//CQueueTraverse(mycqueue);
+	EnCQueue(50, mycqueue);
+	EnCQueue(60, mycqueue);
+	EnCQueue(70, mycqueue);
+	EnCQueue(80, mycqueue);
+	EnCQueue(90, mycqueue);
+	EnCQueue(100, mycqueue);
+	CQueueTraverse(mycqueue);
+
+
+}
+
 
 int main() {
 	//test01();
-	test02();
+	//test02();
+	//test03();
+	test04();
 	system("pause");
 	return 0;
 }

@@ -5,6 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 
+
 typedef struct Queue {
 	int dataarr[MAXSIZE];
 	int front;
@@ -20,4 +21,20 @@ int GetHead(Queue* targetqueue);//获取头元素
 void EnQueue(const int value,Queue* targetqueue);//入队列
 int DeQueue(Queue* targetqueue);//出队列
 void QueueTraverse(Queue* targetqueue);//遍历队列
+
+//循环队列（可以解决顺序队列假溢出问题）
+typedef struct CQueue {
+	int dataarr[MAXSIZE];
+	int frone;
+	int rear;
+}CQueue;
+CQueue* CQueueInit();
+void DestroyCQueue(CQueue* targetcqueue);
+void ClearCQueue(CQueue* targetcqueue);
+int CQueueEmpty(CQueue* targetcqueue);
+int CQueueLength(CQueue* targetcqueue);
+int GetHead_C(CQueue* targetcqueue);
+void EnCQueue(const int value, CQueue* targetcqueue);
+int DeCQueue(CQueue* targetcqueue);
+void CQueueTraverse(CQueue* targetcqueue);
 #endif
