@@ -1,3 +1,11 @@
-﻿  main.c
-E:\CODE\Queue\Queue\main.c(197,2): warning C4013: “system”未定义；假设外部返回 int
+﻿  myqueue.c
+E:\CODE\Queue\Queue\myqueue.c(18): warning C4716: “QueueInit”: 必须返回一个值
+E:\CODE\Queue\Queue\myqueue.c(84): warning C4715: “DeQueue”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(53): warning C4715: “GetHead”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(116): warning C4716: “CQueueInit”: 必须返回一个值
+E:\CODE\Queue\Queue\myqueue.c(168): warning C4715: “GetHead_C”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(275): warning C4716: “LinkQueueInit”: 必须返回一个值
+E:\CODE\Queue\Queue\myqueue.c(238): warning C4715: “DeCQueue”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(346): warning C4715: “GetHead_L”: 不是所有的控件路径都返回值
+E:\CODE\Queue\Queue\myqueue.c(385): warning C4715: “DeLinkQueue”: 不是所有的控件路径都返回值
   Queue.vcxproj -> E:\CODE\Queue\x64\Debug\Queue.exe

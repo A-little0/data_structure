@@ -5,7 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 
-
+//顺序队列
 typedef struct Queue {
 	int dataarr[MAXSIZE];
 	int front;
@@ -28,6 +28,7 @@ typedef struct CQueue {
 	int frone;
 	int rear;
 }CQueue;
+
 CQueue* CQueueInit();
 void DestroyCQueue(CQueue* targetcqueue);
 void ClearCQueue(CQueue* targetcqueue);
@@ -37,4 +38,20 @@ int GetHead_C(CQueue* targetcqueue);
 void EnCQueue(const int value, CQueue* targetcqueue);
 int DeCQueue(CQueue* targetcqueue);
 void CQueueTraverse(CQueue* targetcqueue);
+
+//链队列
+typedef struct LinkQueue {
+	int data;
+	struct LinkQueue* next;
+}LinkQueue;
+
+LinkQueue* LinkQueueInit();
+void DestroyLinkQueue(LinkQueue* targetlinkqueue);
+void ClearLinkQueue(LinkQueue* targetlinkqueue);
+int LinkQueueEmpty(LinkQueue* targetlinkqueue);
+int LinkQueueLength(LinkQueue* targetlinkqueue);
+int GetHead_L(LinkQueue* targetlinkqueue);
+void EnLinkQueue(const int value,LinkQueue* targetlinkqueue);
+int DeLinkQueue(LinkQueue* targetlinkqueue);
+void LinkQueueTraverse(LinkQueue* targetlinkqueue);
 #endif

@@ -258,3 +258,145 @@ void CQueueTraverse(CQueue* targetcqueue)
 		}
 	}
 }
+
+//Á´¶ÓÁÐ
+LinkQueue* LinkQueueInit()
+{
+	LinkQueue* newlinkqueue = (LinkQueue*)malloc(sizeof(LinkQueue));
+	if (newlinkqueue != NULL)
+	{
+		newlinkqueue->data = -1;
+		newlinkqueue->next = NULL;
+	}
+	else
+	{
+		printf("linkqueue init error:no enough space to init\r\n");
+	}
+}
+void DestroyLinkQueue(LinkQueue* targetlinkqueue)
+{
+	LinkQueue* ptrfirst = targetlinkqueue;
+	LinkQueue* ptrsecond = targetlinkqueue->next;
+	while (ptrfirst!=NULL)
+	{
+		free(ptrfirst);
+		ptrfirst = ptrsecond;
+		if (ptrfirst==NULL)
+		{
+			;
+		}
+		else
+		{
+			ptrsecond = ptrfirst->next;
+		}
+	}
+}
+void ClearLinkQueue(LinkQueue* targetlinkqueue)
+{
+	LinkQueue* ptrfirst = targetlinkqueue->next;
+	LinkQueue* ptrsecond = targetlinkqueue->next;
+	while (ptrfirst != NULL)
+	{
+		ptrsecond = ptrfirst->next;
+		free(ptrfirst);
+		ptrfirst = ptrsecond;
+		if (ptrfirst != NULL)
+		{
+			ptrsecond = ptrfirst->next;
+		}
+		else
+		{
+			;
+		}
+	}
+}
+int LinkQueueEmpty(LinkQueue* targetlinkqueue)
+{
+	if (targetlinkqueue->next == NULL)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+int LinkQueueLength(LinkQueue* targetlinkqueue)
+{
+	int length = 0;
+	LinkQueue* ptr = targetlinkqueue;
+	while (ptr->next != NULL)
+	{
+		ptr = ptr->next;
+		length++;
+	}
+
+	return length;
+}
+int GetHead_L(LinkQueue* targetlinkqueue)
+{
+	if (LinkQueueEmpty(targetlinkqueue))
+	{
+		printf("GetHead_L error:this linkqueue is empty\r\n");
+	}
+	else
+	{
+		return targetlinkqueue->data;
+	}
+}
+void EnLinkQueue(const int value, LinkQueue* targetlinkqueue)
+{
+	int length = LinkQueueLength(targetlinkqueue);
+	LinkQueue* ptr = targetlinkqueue;
+	for (int i = 0; i < length; i++)
+	{
+		ptr = ptr->next;
+	}
+	LinkQueue* newlinkqueue_note = (LinkQueue*)malloc(sizeof(LinkQueue));
+	if (newlinkqueue_note != NULL)
+	{
+		newlinkqueue_note->data = value;
+		newlinkqueue_note->next = NULL;
+		ptr->next = newlinkqueue_note;
+	}
+	else
+	{
+		printf("EnLinkQueue error:no enough space to build new note\r\n");
+	}
+}
+int DeLinkQueue(LinkQueue* targetlinkqueue)
+{
+	LinkQueue* ptr = targetlinkqueue;
+	
+	if (ptr->next != NULL)
+	{
+		int popvalue;
+		popvalue = ptr->next->data;
+		ptr = ptr->next->next;
+		free(targetlinkqueue->next);
+		targetlinkqueue->next = ptr;
+		return popvalue;
+	}
+	else
+	{
+		printf("DeLinkQueue error:this LinkQueue is empty\r\n");
+	}
+	
+}
+void LinkQueueTraverse(LinkQueue* targetlinkqueue)
+{
+	if (LinkQueueEmpty(targetlinkqueue))
+	{
+		printf("LinkQueueTraverse error: this LinkQueue is empty\r\n");
+	}
+	else
+	{
+		LinkQueue* ptr = targetlinkqueue->next;
+		for(int i=1; ptr != NULL;i++)
+		{
+			int showvalue = ptr->data;
+			printf("top%d:%d\r\n", i, showvalue);
+			ptr = ptr->next;
+		}
+	}
+}

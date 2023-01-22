@@ -188,12 +188,57 @@ void test04()
 
 }
 
+void test05()
+{
+	LinkQueue* mylinkqueue = LinkQueueInit();
+	//if (LinkQueueEmpty(mylinkqueue))
+	//{
+	//	printf("linkqueue init success\r\n");
+	//}
+	//else
+	//{
+	//	printf("linkqueue init fail\r\n");
+	//}
+	EnLinkQueue(10, mylinkqueue);
+	EnLinkQueue(20, mylinkqueue);
+	EnLinkQueue(30, mylinkqueue);
+	EnLinkQueue(40, mylinkqueue);
+	EnLinkQueue(50, mylinkqueue);
+	LinkQueueTraverse(mylinkqueue);
+	
+	int length = LinkQueueLength(mylinkqueue);
+	for (int i = 0; i<length-2; i++)
+	{
+		DeLinkQueue(mylinkqueue);
+	}
+	EnLinkQueue(10, mylinkqueue);
+	EnLinkQueue(20, mylinkqueue);
+	EnLinkQueue(30, mylinkqueue);
+	LinkQueueTraverse(mylinkqueue);
 
+
+}
 int main() {
 	//test01();
 	//test02();
+	
 	//test03();
-	test04();
+	//test04();
+
+	test05();
 	system("pause");
 	return 0;
+	//for (int i = 0; i < LinkQueueLength(mylinkqueue); i++)
+//{
+//	DeLinkQueue(mylinkqueue);
+//}
+//if (LinkQueueEmpty(mylinkqueue))
+//{
+//	printf("Delinkqueue success\r\n");
+//}
+//else
+//{
+//	printf("Delinkqueue fail\r\n");
+//}
+//LinkQueueTraverse(mylinkqueue);
 }
