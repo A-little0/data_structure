@@ -1,0 +1,4 @@
+﻿  main.c
+E:\CODE\Tree\Tree\main.c(63,2): warning C4013: “system”未定义；假设外部返回 int
+E:\CODE\Tree\Tree\main.c(12): warning C4716: “test01”: 必须返回一个值
+  Tree.vcxproj -> E:\CODE\Tree\x64\Debug\Tree.exe
