@@ -1,4 +1,23 @@
 ﻿  main.c
-E:\CODE\Tree\Tree\main.c(63,2): warning C4013: “system”未定义；假设外部返回 int
+E:\CODE\Tree\Tree\main.c(174,2): warning C4013: “system”未定义；假设外部返回 int
+  mytree.c
+E:\CODE\Tree\Tree\mytree.c(165,19): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+E:\CODE\Tree\Tree\mytree.c(208,11): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
+E:\CODE\Tree\Tree\mytree.c(20): warning C4716: “TreeInit”: 必须返回一个值
+E:\CODE\Tree\Tree\mytree.c(114): warning C4715: “Value”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(92): warning C4715: “TreeDepth”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(136): warning C4715: “Parent”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(158): warning C4715: “RightSibling”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(147): warning C4715: “LeftChild”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(182): warning C4716: “InsertChild”: 必须返回一个值
+E:\CODE\Tree\Tree\mytree.c(250): warning C4716: “BinaryTreeInit”: 必须返回一个值
+E:\CODE\Tree\Tree\mytree.c(264): warning C4715: “DestroyBinaryTree”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(328): warning C4715: “BinaryTree_Value”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(306): warning C4715: “BinaryTree_Depth”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(346): warning C4715: “BinaryTree_LeftChild”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(353): warning C4715: “BinaryTree_RightChild”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(385): warning C4715: “BinaryTree_LeftSibling”: 不是所有的控件路径都返回值
+E:\CODE\Tree\Tree\mytree.c(402): warning C4715: “BinaryTree_RightSibling”: 不是所有的控件路径都返回值
 E:\CODE\Tree\Tree\main.c(12): warning C4716: “test01”: 必须返回一个值
   Tree.vcxproj -> E:\CODE\Tree\x64\Debug\Tree.exe

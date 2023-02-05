@@ -232,3 +232,239 @@ void TraverseTree(Tree* targettree)
 		printf("value:%d\r\n", value);
 	}
 }
+
+BinaryTree* BinaryTreeInit()
+{
+	BinaryTree* newbitree = (BinaryTree*)malloc(sizeof(BinaryTree));
+	if (newbitree != NULL)
+	{
+		newbitree->data = 0;
+		newbitree->ptr.parent = NULL;
+		newbitree->ptr.leftchild = NULL;
+		newbitree->ptr.rightchild = NULL;
+	}
+	else
+	{
+		printf("BinaryTreeInit error:no enough space to init\r\n");
+	}
+}
+BinaryTree* DestroyBinaryTree(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		ClearBinaryTree(targettree);
+		free(targettree);
+		targettree = NULL;
+		return targettree;
+	}
+	else
+	{
+		printf("DestroyBinaryTree error:this binarytree is empty\r\n");
+	}
+}
+BinaryTree* CreatBinaryTree(BinaryTree* targettree);
+void ClearBinaryTree(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		if (targettree->ptr.leftchild != NULL);
+		{
+			ClearBinaryTree(targettree->ptr.leftchild);
+			free(targettree->ptr.leftchild);
+			targettree->ptr.leftchild = NULL;
+		}
+		if (targettree->ptr.rightchild != NULL)
+		{
+			ClearBinaryTree(targettree->ptr.rightchild);
+			free(targettree->ptr.rightchild);
+			targettree->ptr.rightchild = NULL;
+		}
+	}
+}
+
+int BinaryTreeEmpty(BinaryTree* targettree)
+{
+	if (targettree == NULL)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+int BinaryTree_Depth(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		int lefttreeLength = 0;
+		int	righttreeLength = 0;
+		lefttreeLength = BinaryTree_Depth(targettree->ptr.leftchild) + 1;
+		righttreeLength = BinaryTree_Depth(targettree->ptr.rightchild) + 1;
+		return (lefttreeLength >= righttreeLength ? lefttreeLength: righttreeLength);
+	}
+}
+BinaryTree* BinaryTree_Root(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		return targettree;
+	}
+	else
+	{
+		return NULL;
+	}
+}
+BinaryTreeTypeName BinaryTree_Value(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		return targettree->data;
+	}
+	else
+	{
+		printf("BinaryTree_Value error:this binarytree is empty\r\n");
+	}
+}
+void BinaryTree_Assign(BinaryTree* targettree, BinaryTreeTypeName value)
+{
+	if (targettree != NULL)
+	{
+		targettree->data = value;
+	}
+	else
+	{
+		printf("BinaryTree_Assign error:this binarytree is empty\r\n");
+	}
+}
+BinaryTree* BinaryTree_LeftChild(BinaryTree* targettree)
+{
+	if (!BinaryTreeEmpty(targettree))
+	{
+		return targettree->ptr.leftchild;
+	}
+}
+BinaryTree* BinaryTree_RightChild(BinaryTree* targettree)
+{
+	if (!BinaryTreeEmpty(targettree))
+	{
+		return targettree->ptr.rightchild;
+	}
+}
+
+int compare = 0;
+void SonJudge(BinaryTree* targettree, BinaryTree* tree_e)
+{
+	if (targettree != NULL)
+	{
+		if (targettree->ptr.leftchild == tree_e || targettree->ptr.rightchild == tree_e)
+		{
+			compare = 1;
+		}
+		SonJudge(targettree->ptr.leftchild, tree_e);
+		SonJudge(targettree->ptr.rightchild, tree_e);
+	}
+}
+BinaryTree* BinaryTree_LeftSibling(BinaryTree* targettree, BinaryTree* tree_e)
+{
+	
+	if (targettree != NULL)
+	{
+		SonJudge(targettree, tree_e);
+		if (compare == 1)
+		{
+			compare = 0;
+			return tree_e->ptr.leftchild;
+		}
+		else
+		{
+			printf("Left tree is not right tree's father\r\n");
+			return NULL;
+		}
+	}
+}
+BinaryTree* BinaryTree_RightSibling(BinaryTree* targettree, BinaryTree* tree_e)
+{
+	if (targettree != NULL)
+	{
+		SonJudge(targettree, tree_e);
+		if (compare == 1)
+		{
+			compare = 0;
+			return tree_e->ptr.rightchild;
+		}
+		else
+		{
+			printf("Left tree is not right tree's father\r\n");
+			return NULL;
+		}
+	}
+}
+void BinaryTree_InsertChild(BinaryTree* targettree, BinaryTree* tree_e, BinaryTree* child, enum LeftOrRight LR)
+{
+	if (targettree != NULL && child->ptr.rightchild==NULL)
+	{
+		SonJudge(targettree, tree_e);
+		if (compare == 1)
+		{
+			compare = 0;
+			if (LR == L)
+			{
+				child->ptr.rightchild = tree_e->ptr.leftchild;
+				tree_e->ptr.leftchild = child;
+			}
+			else if (LR == R)
+			{
+				child->ptr.rightchild = tree_e->ptr.rightchild;
+				tree_e->ptr.rightchild = child;
+			}
+		}
+		else
+		{
+			printf("the first bitree is not the second bitree's partent\r\n");
+		}
+	}
+}
+void BinaryTree_DeleteChild(BinaryTree* targettree)
+{
+	if (targettree!= NULL)
+	{
+		DestroyBinaryTree(targettree->ptr.leftchild);
+		DestroyBinaryTree(targettree->ptr.rightchild);
+	}
+	else
+	{
+		printf("this binary tree is emptytree\r\n");
+	}
+}
+void PreOrderTraverse(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{
+		printf("%d", targettree->data);
+		//printf("%d", targettree->ptr.leftchild->data);
+		//printf("%d", targettree->ptr.rightchild->data);
+		PreOrderTraverse(targettree->ptr.leftchild);
+		PreOrderTraverse(targettree->ptr.rightchild);
+	}
+}
+void InOrderTraverse(BinaryTree* targettree)
+{
+	if (targettree != NULL)
+	{	
+		InOrderTraverse(targettree->ptr.leftchild);
+		printf("%d", targettree->data);
+		InOrderTraverse(targettree->ptr.rightchild);
+	}
+}
+void PostOrderTraverse(BinaryTree* targettree)
+{
+	if (!BinaryTreeEmpty(targettree))
+	{
+		PostOrderTraverse(targettree->ptr.leftchild);
+		PostOrderTraverse(targettree->ptr.rightchild);
+		printf("%d", targettree->data);
+	}
+}
+void LevelOrderTraverse(BinaryTree* targettree);
+
