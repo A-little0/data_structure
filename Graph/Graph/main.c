@@ -13,7 +13,6 @@ void test01()
 	};
 	printf("%s\r\n", *(p+1));
 }
-
 void test02()
 {
 	AM_to_Graph* mygraph = creatAdjacencyMatrix_toGraph(5);
@@ -26,7 +25,6 @@ void test02()
 		printf("\r\n");
 	}
 }
-
 void test03()
 {
 	int* begin = (int*)malloc(sizeof(int) * 25);
@@ -56,31 +54,50 @@ void test03()
 	}
 
 }
-
-void test04()
+//void test04()
+//{
+//	int* arr = (int*)malloc(sizeof(int) * 5);
+//	int(*p)[10];
+//	p = arr;
+//	if (p != NULL)
+//	{
+//		for (int i = 0; i < 5; i++)
+//		{
+//			p[0][i] = i;
+//		}
+//		for (int j = 0; j < 5; j++)
+//		{
+//			printf("%d\r\n", p[0][j]);
+//		}
+//	}
+//}
+void test05()
 {
-	int* arr = (int*)malloc(sizeof(int) * 5);
-	int(*p)[10];
-	p = arr;
-	if (p != NULL)
+	UnGraph* myUngraph = creatUnGraph(5);
+	for (int i = 0; i < myUngraph->am->vexnum; i++)
 	{
-		for (int i = 0; i < 5; i++)
+		for (int j = 0; j < myUngraph->am->vexnum; j++)
 		{
-			p[0][i] = i;
+			printf("AMarr[%d][%d]=%d ", i, j,myUngraph->am->linkarr[i][j]);
 		}
-		for (int j = 0; j < 5; j++)
-		{
-			printf("%d\r\n", p[0][j]);
-		}
+		printf("\r\n");
 	}
+	printf("--------------------------------------------------------\r\n");
+	for (int i = 0; i < myUngraph->am->vexnum; i++)
+	{
+		printf("Dataarr[%d}=%d", i, myUngraph->data[i]);
+	}
+	printf("\n");
 }
+
 
 int main() {
 
 	//test01();
-	test02();
+	//test02();
 	//test03();
 	//test04();
+	test05();
 
 	system("pause");
 	return 0;

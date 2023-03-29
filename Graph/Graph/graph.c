@@ -52,3 +52,25 @@ AM_to_Graph* creatAdjacencyMatrix_toGraph(int vnum)//构造关系矩阵
 		printf("func with creatAdjacencyMatrix_toGraph error:please creat the vnum > 0\r\n");
 	}
 }
+
+UnGraph* creatUnGraph(int vnum)
+{
+	UnGraph* newungraph = (UnGraph*)malloc(sizeof(UnGraph));
+	if (newungraph != NULL)
+	{
+		newungraph->am= creatAdjacencyMatrix_toGraph(vnum);
+		for (int i = 0; i < vnum; i++)
+		{
+			Undeirected_Graph_Type temp=0;
+			printf("please to put the %d data:",i);
+			scanf("%d", &temp);
+			newungraph->data[i] = temp;
+		}
+		return newungraph;
+	}
+	else
+	{
+		printf("func with creatUnGraph error:no enough space to creat\r\n");
+		return NULL;
+	}
+}

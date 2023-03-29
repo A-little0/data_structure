@@ -1,9 +1,4 @@
-﻿  graph.c
-E:\CODE\Graph\Graph\graph.c(13,58): warning C4047: “=”:“int (*)[15]”与“int *”的间接级别不同
-  main.c
-E:\CODE\Graph\Graph\main.c(46,12): warning C4047: “=”:“int (*)[5]”与“int *”的间接级别不同
-E:\CODE\Graph\Graph\main.c(64,9): warning C4047: “=”:“int (*)[10]”与“int *”的间接级别不同
-E:\CODE\Graph\Graph\main.c(85,2): warning C4013: “system”未定义；假设外部返回 int
-  正在生成代码...
-E:\CODE\Graph\Graph\graph.c(54): warning C4715: “creatAdjacencyMatrix_toGraph”: 不是所有的控件路径都返回值
+﻿  main.c
+E:\CODE\Graph\Graph\main.c(44,12): warning C4047: “=”:“int (*)[5]”与“int *”的间接级别不同
+E:\CODE\Graph\Graph\main.c(102,2): warning C4013: “system”未定义；假设外部返回 int
   Graph.vcxproj -> E:\CODE\Graph\x64\Debug\Graph.exe
