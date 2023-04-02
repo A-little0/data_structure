@@ -90,6 +90,71 @@ void test05()
 	printf("\n");
 }
 
+void test06()
+{
+	UnGraph* myUngraph = creatUnGraph(5);
+	for (int i = 0; i < myUngraph->am->vexnum; i++)
+	{
+		for (int j = 0; j < myUngraph->am->vexnum; j++)
+		{
+			printf("AMarr[%d][%d]=%d ", i, j, myUngraph->am->linkarr[i][j]);
+		}
+		printf("\r\n");
+	}
+	printf("--------------------------------------------------------\r\n");
+	for (int i = 0; i < myUngraph->am->vexnum; i++)
+	{
+		printf("Dataarr[%d}=%d", i, myUngraph->data[i]);
+	}
+	printf("\n");
+
+	int a = locateVex(myUngraph, 4);
+	if (a == 4)
+	{
+		printf("success to func of locateVex\r\n ");
+	}
+	else
+	{
+		printf("fail to func of locateVex\r\n");
+	}
+
+	int b = getVex(myUngraph, 4);
+	if (b == 4)
+	{
+		printf("success to func of getVex\r\n");
+	}
+	else
+	{
+		printf("fail to func of getVex\r\n");
+	}
+
+	putVex(myUngraph,4,10);
+	if (myUngraph->data[4] == 10)
+	{
+		printf("success to func of putVex\r\n");
+	}
+	else
+	{
+		printf("fail to func of putVex\r\n");
+	}
+	int c = firstAdjVex(myUngraph, 0);
+	if (myUngraph->am->linkarr[0][c] == 1)
+	{
+		for (int i = 0; i != c && i < myUngraph->am->vexnum; i++)
+		{
+			if (myUngraph->am->linkarr[0][i] == 1)
+			{
+				printf("fail to func of firstAdjVex\r\n");
+			}
+		}
+		printf("success to func of firstAdjVex\r\n");
+	}
+	else
+	{
+		printf("fail to func of firstAdjVex\r\n");
+	}
+}
+
 
 int main() {
 
@@ -97,7 +162,8 @@ int main() {
 	//test02();
 	//test03();
 	//test04();
-	test05();
+	//test05();
+	test06();
 
 	system("pause");
 	return 0;
