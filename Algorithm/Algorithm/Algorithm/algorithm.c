@@ -62,81 +62,61 @@ void BinaryInsertionSort(int* target_arr, int length, int choice)// 要排序数组，
 	{
 		temp = target_arr[0];
 		target_arr[0] = target_arr[i];
-		if (choice == 0)
-		{
-			int j = temp;
-			int first = 1;
-			int end = temp;
-			while (end != first)
-			{
-				int mid = (end + first) / 2;
-				int midvalue = 0;
 
-				if (mid * 2 != end + first)
-				{
-					midvalue = (float)(target_arr[mid] + target_arr[mid + 1]) / 2;
-				}
-				else
-				{
-					midvalue = target_arr[mid];
-				}
-				if (target_arr[0] >= midvalue)
-				{
-					j = mid;
-					break;
-				}
-				else
-				{
-					first = 1;
-					end = mid;
-				}
-			}
-			if (target_arr[end] >= target_arr[0]) { j = 0; }
-			for (int k = i, m = 0; m < i - j; m++)
-			{
-				target_arr[k] = target_arr[k - 1];
-				k--;
-			}
-			target_arr[j + 1] = target_arr[0];
-		}
-		else if (choice == 1)
+		int begin = 1;
+		int end = temp;
+		int j = 0;
+		while (begin + 1 != end)
 		{
-			int j = temp;
-			int first = 1;
-			int end = temp;
-			while (end != first+1)
-			{
-				int mid = (end + first) / 2;
-				float midvalue = 0;
+			if (begin == end) { break; }
+			int mid_sub = (begin + end) / 2;
+			int mid_value = 0;
+			if (mid_sub * 2 == begin + end) { (target_arr[begin] + target_arr[end]) / 2; }
+			else { mid_value = target_arr[mid_sub]; }
 
-				if (mid * 2 != end + first)
-				{
-					midvalue = (float)(target_arr[mid] + target_arr[mid + 1]) / 2;
-				}
-				else
-				{
-					midvalue = target_arr[mid];
-				}
-				if (target_arr[0] >= midvalue)
-				{
-					j = mid;
-					break;
-				}
-				else
-				{
-					first = mid;
-				}
-			}
-			if (target_arr[end] <= target_arr[0]) { j = i; }
-			for (int k = i, m = 0; m < i - j; m++)
+			if (target_arr[0] >= mid_value)
 			{
-				target_arr[k] = target_arr[k - 1];
-				k--;
+				end = mid_sub;
 			}
-			target_arr[j + 1] = target_arr[0];
+			else if (target_arr[0] < mid_value)
+			{
+				begin = mid_sub;
+			}
+			
+		
 		}
+		if (target_arr[0] > target_arr[end] && target_arr[0] < target_arr[begin])
+		{
+			j = begin;
+		}
+		else if (target_arr[0] >= target_arr[begin])
+		{
+			j = begin - 1;
+		}
+		else if (target_arr[0] > target_arr[end] && target_arr[0] < target_arr[begin])
+		{
+			j = end;
+		}
+		else if (target_arr[0] < target_arr[end])
+		{
+			j = end;//这里注意
+		}
+
+
+		for (int k = i; k >= j + 2;)//int k = i, m = 0; m < i - j; m++  int k = i; k >= j + 2;
+		{
+			target_arr[k] = target_arr[k - 1];
+			k--;
+		}
+		target_arr[j + 1] = target_arr[0];
+
 		temp++;
 		target_arr[0] = temp;
+		//for (int i = 1; i <= length; i++)
+		//{
+		//	printf("arr[%d]=%d\r\n", i, target_arr[i]);
+		//}
+		//printf("-------------------------------------------------------------\r\n");
 	}
 	for (int i = 1; i <= length; i++)
 	{

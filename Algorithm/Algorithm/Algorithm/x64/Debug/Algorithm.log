@@ -1,4 +1,3 @@
 ﻿  algorithm.c
-E:\CODE\Algorithm\Algorithm\algorithm.c(77,64): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-E:\CODE\Algorithm\Algorithm\algorithm.c(118,27): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\CODE\Algorithm\Algorithm\algorithm.c(74,76): warning C4552: ”/“: 未使用表达式结果
   Algorithm.vcxproj -> E:\CODE\Algorithm\x64\Debug\Algorithm.exe
