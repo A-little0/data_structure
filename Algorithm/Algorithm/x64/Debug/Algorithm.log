@@ -1,5 +1,4 @@
 ﻿  algorithm.c
-  main.c
-E:\CODE\Algorithm\Algorithm\main.c(14,2): warning C4013: “system”未定义；假设外部返回 int
-  正在生成代码...
+E:\CODE\Algorithm\Algorithm\algorithm.c(76,77): warning C4552: ”/“: 未使用表达式结果
+E:\CODE\Algorithm\Algorithm\algorithm.c(139,77): warning C4552: ”/“: 未使用表达式结果
   Algorithm.vcxproj -> E:\CODE\Algorithm\x64\Debug\Algorithm.exe
