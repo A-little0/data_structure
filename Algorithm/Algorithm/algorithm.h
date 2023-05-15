@@ -7,38 +7,9 @@ void StraightInsertionSort(int* target_arr, int length,int choice);//ÒªÅÅÐòÊý×é£
 //ÕÛ°ë²åÈëÅÅÐò
 void BinaryInsertionSort(int* target_arr, int length,int choice);// ÒªÅÅÐòÊý×é£¬Êý×é³¤¶È
 //Ï£¶ûÅÅÐò
-void DiminishingIncrementSort(int* target_arr, int length, int choice, int dx, int d_dx);//ÒªÅÅÐòµÄÊý×é£¬Êý×é³¤¶È£¬£¨choice==0£º´ÓÐ¡µ½´óchoice==1:´Ó´óµ½Ð¡£©£¬ÔöÁ¿£¬ÔöÁ¿µÄÔöÁ¿
-
-//void DiminishingIncrementSort(int* target_arr, int length, int choice, int dx, int d_dx)
-//{
-//	while (dx >= 1)
-//	{
-//
-//		for (int i = 0; i + dx <= length - 1; i++)
-//		{
-//			//if (target_arr[i] >= target_arr[i + dx])
-//			//{
-//			//	int temp = target_arr[i];
-//			//	target_arr[i] = target_arr[i + dx];
-//			//	target_arr[i + dx] = temp;
-//			//}
-//
-//
-//
-//		}
-//		dx -= d_dx;
-//
-//
-//		for (int i = 0; i < length; i++)
-//		{
-//			printf("arr[%d]=%d\r\n", i, target_arr[i]);
-//		}
-//		printf("----------------------------------------------------------\r\n");
-//	}
-//
-//	//for (int i = 0; i < length; i++)
-//	//{
-//	//	printf("arr[%d]=%d\r\n", i, target_arr[i]);
-//	//}
-//}
+void DiminishingIncrementSort(int* target_arr, int length, int choice, int dx, int d_dx);
+//¿ìËÙÅÅÐò
+void QuickSort(int* target_arr, int length);
+//¼òµ¥Ñ¡ÔñÅÅÐò
+void SimpleSelectionSort(int* target_arr, int length);
 #endif
