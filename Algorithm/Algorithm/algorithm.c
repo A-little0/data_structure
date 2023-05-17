@@ -279,59 +279,117 @@ void DiminishingIncrementSort(int* target_arr, int length, int choice, int dx, i
 }
 
 //快速排序
-void QuickSort(int* target_arr, int length)
+void QuickSort(int* target_arr, int length,int choice)
 {
-	if (length <= 1)
+	if (choice == 0)
 	{
-		return;
-	}
-	else
-	{
-		int low = 0;
-		int high = length-1;
-		int pivotkey_sub = 0;
-		int pivotkey = target_arr[0];
-		while (low != high)
+		if (length <= 1)
 		{
-			pivotkey = target_arr[pivotkey_sub];
-			while (1)
-			{
-				if (target_arr[high] < pivotkey)
-				{
-					int temp = target_arr[high];
-					target_arr[high] = pivotkey;
-					target_arr[pivotkey_sub] = temp;
-					pivotkey_sub = high;
-					break;
-				}
-				else
-				{
-					high--;
-				}
-				if (high == low) { break; }
-			}
-			pivotkey = target_arr[pivotkey_sub];
-			if (low == high) { break; }
-			while (1)
-			{
-				if (target_arr[low] > pivotkey)
-				{
-					int temp = target_arr[low];
-					target_arr[low] = pivotkey;
-					target_arr[pivotkey_sub] = temp;
-					pivotkey_sub = low;
-					break;
-				}
-				else
-				{
-					low++;
-				}
-				if (low == high) { break; }
-			}
-
+			return;
 		}
-		QuickSort(target_arr, low);
-		QuickSort(target_arr + low + 1, length - low-1 );
+		else
+		{
+			int low = 0;
+			int high = length - 1;
+			int pivotkey_sub = 0;
+			int pivotkey = target_arr[0];
+			while (low != high)
+			{
+				pivotkey = target_arr[pivotkey_sub];
+				while (1)
+				{
+					if (target_arr[high] < pivotkey)
+					{
+						int temp = target_arr[high];
+						target_arr[high] = pivotkey;
+						target_arr[pivotkey_sub] = temp;
+						pivotkey_sub = high;
+						break;
+					}
+					else
+					{
+						high--;
+					}
+					if (high == low) { break; }
+				}
+				pivotkey = target_arr[pivotkey_sub];
+				if (low == high) { break; }
+				while (1)
+				{
+					if (target_arr[low] > pivotkey)
+					{
+						int temp = target_arr[low];
+						target_arr[low] = pivotkey;
+						target_arr[pivotkey_sub] = temp;
+						pivotkey_sub = low;
+						break;
+					}
+					else
+					{
+						low++;
+					}
+					if (low == high) { break; }
+				}
+
+			}
+			QuickSort(target_arr, low,0);
+			QuickSort(target_arr + low + 1, length - low - 1,0);
+		}
+	}
+	else if (choice == 1)
+	{
+		if (length <= 1)
+		{
+			return;
+		}
+		else
+		{
+			int low = 0;
+			int high = length - 1;
+			int pivotkey_sub = 0;
+			int pivotkey = target_arr[0];
+			while (low != high)
+			{
+				pivotkey = target_arr[pivotkey_sub];
+				while (1)
+				{
+					if (target_arr[high] > pivotkey)
+					{
+						int temp = target_arr[high];
+						target_arr[high] = pivotkey;
+						target_arr[pivotkey_sub] = temp;
+						pivotkey_sub = high;
+						break;
+					}
+					else
+					{
+						high--;
+					}
+					if (high == low) { break; }
+				}
+				pivotkey = target_arr[pivotkey_sub];
+				if (low == high) { break; }
+				while (1)
+				{
+					if (target_arr[low] < pivotkey)
+					{
+						int temp = target_arr[low];
+						target_arr[low] = pivotkey;
+						target_arr[pivotkey_sub] = temp;
+						pivotkey_sub = low;
+						break;
+					}
+					else
+					{
+						low++;
+					}
+					if (low == high) { break; }
+				}
+
+			}
+			QuickSort(target_arr, low,1);
+			QuickSort(target_arr + low + 1, length - low - 1,1);
+		}
 	}
 	//for (int i = 0; i < length; i++)
 	//{
@@ -341,28 +399,54 @@ void QuickSort(int* target_arr, int length)
 }
 
 //简单选择排序
-void SimpleSelectionSort(int* target_arr, int length)
+void SimpleSelectionSort(int* target_arr, int length,int choice)
 {
-	for (int i = 0; i < length; i++)
+	if(choice==0)
 	{
-		int min = target_arr[i];
-		int choice = i;
-		for (int j = i; j < length; j++)
+		for (int i = 0; i < length; i++)
 		{
-			if (target_arr[j] < min)
+			int min = target_arr[i];
+			int choice = i;
+			for (int j = i; j < length; j++)
 			{
-				min = target_arr[j];
-				choice = j;
+				if (target_arr[j] < min)
+				{
+					min = target_arr[j];
+					choice = j;
+				}
 			}
+			int temp = target_arr[i];
+			target_arr[choice] = temp;
+			target_arr[i] = min;
 		}
-		int temp = target_arr[i];
-		target_arr[choice] = temp;
-		target_arr[i] = min;
-
-		for (int z = 0; z < length; z++)
-		{
-			printf("arr[%d]=%d\r\n", z, target_arr[z]);
-		}
-		printf("----------------------------------------------\r\n");
 	}
+	else if (choice == 1)
+	{
+		for (int i = 0; i < length; i++)
+		{
+			int max = target_arr[i];
+			int choice = i;
+			for (int j = i; j < length; j++)
+			{
+				if (target_arr[j] > max)
+				{
+					max = target_arr[j];
+					choice = j;
+				}
+			}
+			int temp = target_arr[i];
+			target_arr[choice] = temp;
+			target_arr[i] = max;
+		}
+	}
+	for (int z = 0; z < length; z++)
+	{
+		printf("arr[%d]=%d\r\n", z, target_arr[z]);
+	}
+	printf("----------------------------------------------\r\n");
+}
+
+void TreeSelectionSort(int* target_arr, int length, int* sort_arr)
+{
+	    
 }

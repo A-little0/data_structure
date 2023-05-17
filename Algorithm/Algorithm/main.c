@@ -23,7 +23,7 @@ void test03()
 void test04()
 {
 	int arr[10 + 1] = { 0,3,2,1,4,5,8,9,6,7,10 };
-	QuickSort(arr, 11);
+	QuickSort(arr, 11,1);
 	
 	for (int i = 0; i < 11; i++)
 	{
@@ -32,11 +32,19 @@ void test04()
 	printf("-------------------------------------------------------\r\n");
 }
 
+void test05()
+{
+	int arr[10 + 1] = { 0,3,2,1,4,5,8,9,6,7,10 };
+	SimpleSelectionSort(arr,11,1);
+}
+
 int main() {
 	//test01();
 	//test02();
 	//test03();
-	test04();
+	//test04();
+	test05();
+
 
 
 	system("pause");

@@ -9,7 +9,9 @@ void BinaryInsertionSort(int* target_arr, int length,int choice);// 要排序数组，
 //希尔排序
 void DiminishingIncrementSort(int* target_arr, int length, int choice, int dx, int d_dx);
 //快速排序
-void QuickSort(int* target_arr, int length);
+void QuickSort(int* target_arr, int length,int choice);
 //简单选择排序
-void SimpleSelectionSort(int* target_arr, int length);
+void SimpleSelectionSort(int* target_arr, int length,int choice);
+//树形选择排序
+void TreeSelectionSort(int* target_arr, int length);
 #endif
